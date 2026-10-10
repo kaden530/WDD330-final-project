@@ -1,0 +1,19 @@
+{
+  "name": "wdd330",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\""
+  },
+  "devDependencies": {
+    "eslint": "^10.11.0",
+    "lint": "^1.2.2",
+    "vite": "^8.3.0"
+  }
+}

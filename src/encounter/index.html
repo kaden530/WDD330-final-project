@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/wizard.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../js/encounter.js" defer></script>
+    <link rel="stylesheet" href="../style.css" />
+    <title>Roll Initiative</title>
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montenegrin+Gothic+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="divider" id="main-header"></header>
+
+    <main class="divider">
+ 
+
+
+
+
+<!--encounter form-->
+  <section class="encounter-information">
+          <form
+            id="encounter-form"
+            onsubmit=" event.preventDefault(); /* const myCheckout = new CheckoutProcess(); myCheckout.init(); myCheckout.checkout(this);*/"
+            novalidate
+          >
+            <h2>Encounter Details</h2>
+            <!-- Hidden inline notification alert area -->
+            <div
+              id="validation-alert"
+              class="encounter-hidden-alert"
+              role="alert"
+            >
+              Please correct the highlighted fields before continuing.
+            </div>
+            <label for="partyLevel"
+              >Party Level <span class="required-asterisk"></span
+            ></label>
+            <input type="number" id="partyLevel" name="partyLevel" required />
+            <label for="partySize"
+              >Party Size <span class="required-asterisk"></span
+            ></label>
+            <input type="number" id="partySize" name="partySize" required />
+            <label for="enemyParty"
+              >Number of Enemies <span class="required-asterisk"></span
+            ></label>
+            <input type="number" id="enemyParty" name="enemyParty" required />
+            <label for="difficulty"
+              >Difficulty Level <span class="required-asterisk"></span
+            ></label>
+            <select id="difficulty" name="difficulty" required>
+              <option value="">Select Difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="deadly">Deadly</option>
+            </select>
+
+            <label for="environment"
+              >Environment <span class="required-asterisk"></span
+            ></label>
+            <select id="environment" name="environment" required>
+              <option value="">Select Environment</option>
+              <options value="arctic">Arctic</option>
+              <option value="caves">Caves</option>
+              <option value="coast">Coast</option>
+              <option value="desert">Desert</option>
+              <option value="forest">Forest</option>
+              <option value="grassland">Grassland</option>
+              <option value="hills">Hills</option>
+              <option value="laboratory">Laboratory</option>
+              <option value="lake">Lake</option>
+              <option value="mountain">Mountain</option>
+              <option value="ocean">Ocean</option>
+              <option value="ruins">Ruins</option>
+              <option value="sewer">Sewer</option>
+              <option value="shadowfell">Shadowfell</option>
+              <option value="swamp">Swamp</option>
+              <option value="temple">Temple</option>
+              <option value="tomb">Tomb</option>
+              <option value="underworld">Underworld</option>
+              <option value="urban">Urban</option>
+            </select>
+            <button type="submit" id="generateEncounter">
+              Generate Encounter
+            </button>
+          </form>
+<!--generated results-->
+    <section id="monster-container"></section>
+    </main>
+    <footer class="divider" id="main-footer"></footer>
+</html>
