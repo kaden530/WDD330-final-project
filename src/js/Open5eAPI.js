@@ -2,7 +2,7 @@ export default class Open5eApi {
     constructor() {
         this.baseUrl = "https://api.open5e.com/v2";
     }
-
+/*Combat encounter Generation*/
     async parseMonsterList(targetEnvironment) {
         try {
             const response = await fetch(`${this.baseUrl}/creatures/`);
@@ -68,7 +68,7 @@ async fetchAllCreatures(targetCR) {
     if (creature) {
       console.log(`Found Creature!Name: ${creature.name}, AC: ${creature.armor_class}, HP: ${creature.hit_points}`);
       allCreatures = allCreatures.concat(creature);
-        currentUrl = data.next; 
+      currentUrl = data.next; 
       pageCount++;
       } else {
       console.log(`No valid Creatures found on page ${pageCount} of results.`);
@@ -86,11 +86,6 @@ async fetchAllCreatures(targetCR) {
 
     console.log(`\n Success! Total Creatures Fetched: ${allCreatures.length}`);
     
-    // Now you can safely use your .find() or .filter() on the complete array
-    const goblin = allCreatures.find(c => c.name.toLowerCase() === 'goblin');
-    if (goblin) {
-      console.log(`Found Goblin! AC: ${goblin.armor_class}, HP: ${goblin.hit_points}`);
-    }
 
     return allCreatures;
 
@@ -98,7 +93,64 @@ async fetchAllCreatures(targetCR) {
     console.error('An error occurred while pulling all pages:', error);
   }
 }
+/*Loot generation*/
+
+
+async getItems(highestValue){
+  let pageCount = 1;
+  let itemUrl = `${this.baseUrl}/items/?page=2&page=${pageCount}`;
+  let allItems =[]
+  console.log('Starting data retrieval from Open5e API...');
+
+  try {
+    // Keep looping as long as the API provides a 'next' page URL
+    while (itemUrl) {
+      console.log(`Fetching page ${pageCount}...`);
+      const response = await fetch(itemUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      const items = data.results || [];
+
+
+
+      const loot = items.filter(item => item.cost < highestValue)
+            //const matchingItems = items.filter(item => item.cost < 500);
+            //allItems.push(...matchingItems);
+      if (loot) {
+        loot.forEach(loot => {
+           //console.log(`Found Loot!  Name: ${loot.name}, Desc: ${loot.desc}`);
+        });
+        allItems = allItems.concat(loot);
+        itemUrl = data.next; 
+        pageCount++;
+      } else {
+      console.log(`No treasure found on page ${pageCount} of results.`);
+            itemUrl = data.next; 
+      pageCount++;
+      
+    }
+    }
+  
+  
+  } catch (error) {
+    console.error('An error occurred while pulling all pages:', error);
   }
+  console.log(Array.isArray(allItems));
+  return allItems
+}
+
+
+
+
+/*store generation */
+
+
+}
+
+
+  
 
 
 

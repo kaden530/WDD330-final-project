@@ -69,3 +69,28 @@ export function monsterTemplate(monster) {
 export function monsterListTemplate(monsters) {
     return monsters.map(monster => monsterTemplate(monster)).join("");
 }
+
+export function lootCardTemplate(loot){return `
+        <article class="lootCard">
+            <header class="loot-card-header">
+                <h2>${loot.name}</h2>
+                <p>${loot.size.name} ${loot.category.name}, ${loot.weight} ${loot.wight_unit}</p>
+            </header>
+
+            <section class="loot-card-desc">
+                <p> 
+                <strong> value:</strong>
+                ${loot.cost}
+                </p>
+                <p>
+
+                    <strong>Item Desc:</strong>
+                    ${loot.desc}
+                </p>
+
+            </section>
+        </article>
+    `;
+}
+export function lootListTemplate(items) {
+    return items.map(loot => lootCardTemplate(loot)).join("");}
