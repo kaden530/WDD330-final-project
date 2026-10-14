@@ -134,7 +134,8 @@ export function lootCardTemplate(loot){
             </header>
 
             <section class="lootCardDesc">
-                <p> 
+            <div class ="lootCardValues">    
+            <p> 
                 <strong> value:</strong>
                 ${loot.cost} GP
                 </p>
@@ -142,6 +143,7 @@ export function lootCardTemplate(loot){
                 <p>
                 <strong> Size:</strong>
                 ${loot.size.name}</p>
+                </div>
                 <br>
                 <p>
                     <strong>Item Desc:</strong>
@@ -164,6 +166,7 @@ export function magicLootCardTemplate(loot){return `
             </header>
 
             <section class="magicLootCardDesc">
+            <div class ="magicLootCardValues">
                 <p> 
                 <strong> value:</strong>
                 ${loot.cost} GP
@@ -176,7 +179,8 @@ export function magicLootCardTemplate(loot){return `
                 <p>
                 <strong> attunement:</strong>
                 ${loot.requires_atunement?? "none"}: ${loot.atunement_detail ?? ""} </p>
-                <br>
+                </div>
+                <br/>
                 <p>
                     <strong>Item Desc:</strong>
                     ${loot.desc}

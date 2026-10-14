@@ -52,6 +52,21 @@ border-top: 1px solid #ccc;
 margin-bottom: 20px;
 
 }
+main h1{background-color: #f9f9f9;
+width: fit-content;
+border: #44a4cd solid 10px;
+margin: auto;}
+main p.titlePage{
+  background-color: #f9f9f9;
+}
+div.lootCardValues{
+  display: flex;
+  flex-wrap: wrap;
+}
+div.magicLootCardValues{
+  display: flex;
+  flex-wrap: wrap;
+}
 /* --- Base Styles: Mobile First (Phones under 600px) --- */
 @media screen and (max-width: 600px){
  /*loot link button */
@@ -77,6 +92,9 @@ margin-bottom: 20px;
 
 section .lootButton:hover {
   background-color: #b3a400;
+}
+main p.titlePage{
+ font-size: 1.5em;
 }
  /*encounter form styles*/
  form#encounterForm{
@@ -403,6 +421,9 @@ height: fit-content;
       font-size: 1.4em;
     align-items: left;
     border:#1a1a1a solid 5px;
+    & p{
+      font-size: 0.9em;
+    }
   }
   & .magicLootCardDesc{
      background-color: #f9f9f9;
@@ -410,6 +431,9 @@ height: fit-content;
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .magicLootCardValues {
+      font-size: 0.9em;
+    }
     & p{padding-left: 5px;
     margin: 5px;
     font-size: 1.4em;}
@@ -463,7 +487,10 @@ border-top: 1px solid #ccc;
 margin-bottom: 20px;
 
 } 
-  
+main h1{font-size:2.5em ;}
+  main p.titlePage{
+ font-size: 2em;
+}
   /*loot link button */
  section{
   justify-items: center;
@@ -723,12 +750,18 @@ grid-template-columns: repeat(auto-fit, minmax(calc(50% - 15px), 1fr));
     padding : 5px;
     align-items: left;
     border:#1a1a1a solid 5px;
+    & p{
+      font-size: 0.8em;
+    }
   }
   & .lootCardDesc{
     display: flex;
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .lootCardValues{
+      font-size: 0.8em;
+    }
     & p{padding-left: 5px;
     margin: 2px;
     font-size: 1.6em;}
@@ -824,6 +857,9 @@ grid-template-columns: repeat(auto-fit, minmax(calc(50% - 15px), 1fr));
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .magicLootCardValues {
+      font-size: 0.9em;
+    }
     & p{padding-left: 5px;
     margin: 5px;
     font-size: 1.4em;}
@@ -877,6 +913,7 @@ border-top: 1px solid #ccc;
 margin-bottom: 0px;
 margin-top: 10px;
 }
+ main h1{font-size:3.5em ;}
   
   /*loot link button */
  section{
@@ -1132,12 +1169,18 @@ height: fit-content;
     padding : 5px;
     align-items: left;
     border:#1a1a1a solid 5px;
+    & p {
+      font-size: 0.8em;
+    }
   }
   & .lootCardDesc{
     display: flex;
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .lootCardValues {
+      font-size: 0.9em;
+    }
     & p{padding-left: 5px;
     margin: 2px;
     font-size: 1.3em;}
@@ -1227,6 +1270,9 @@ height: fit-content;
     align-items: left;
       font-size: 1.4em;
     border:#1a1a1a solid 5px;
+    & p {
+      font-size: 0.9em;
+    }
   }
   & .magicLootCardDesc{
      background-color: #f9f9f9;
@@ -1234,6 +1280,9 @@ height: fit-content;
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .magicLootCardValues {
+      font-size: 0.9em;
+    }
     & p{padding-left: 5px;
     margin: 5px;
     font-size: 1.4em;}
@@ -1244,7 +1293,10 @@ height: fit-content;
 
 /* --- Large Screens (1201px and up) --- */
 @media screen and (min-width: 1201px) {
-
+main p.titlePage{
+ font-size: 1.8em;
+}
+ main h1{font-size:4.5em ;}
 /*header and footer styles*/
 #main-header{
    color: white;
@@ -1478,6 +1530,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     padding : 5px;
     align-items: left;
     border:#1a1a1a solid 5px;
+    & p {font-size: 0.8em;}
   }
   & .lootCardDesc{
     display: flex;
@@ -1571,6 +1624,9 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     padding : 5px;
     align-items: left;
     border:#1a1a1a solid 5px;
+    & p {
+      font-size: 0.9em;
+    }
   }
   & .magicLootCardDesc{
      background-color: #f9f9f9;
@@ -1578,7 +1634,11 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     flex-direction: column;
      flex-wrap: wrap;
     align-items: center;
+    & .magicLootCardValues {
+      font-size: 0.9em;
+    }
     & p{padding-left: 5px;
+      
     margin: 2px;}
   }
 

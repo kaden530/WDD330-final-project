@@ -60,9 +60,22 @@ export async function generateLoot(form) {
      localStorage.removeItem("sharedData");
      console.log("check 0", partyLevel, enemyPartySize, difficulty )
 }else{
+    const errorBox = document.getElementById("validation-alert");
     partyLevel = Number(form.partyLevel.value);
     enemyPartySize = Number(form.enemyParty.value);
-    difficulty = form.difficulty.value;}
+    difficulty = form.difficulty.value;
+if (partyLevel === "") {
+    errorBox.style.display = "block";
+    return
+  }else if(enemyPartySize=== ""){
+errorBox.style.display = "block";
+return   
+}else if(difficulty===""){
+errorBox.style.display = "block";
+return
+}else {
+    errorBox.style.display = "none";
+}
     console.log("check 1", partyLevel )
 
 
@@ -166,7 +179,7 @@ lootedItems.push(item);}
 console.log(lootedItems.length, "item cards with magic items");
 return lootedItems
 }
-
+}
 
 
 const lootForm = document.querySelector("#lootForm");
@@ -177,12 +190,17 @@ window.addEventListener('load', async () => {
             const loot = await generateLoot(lootForm);
             lootContainer.innerHTML = lootListTemplate(loot);
         } else {return}});
-            lootForm.addEventListener("submit", async (event) => {
+lootForm.addEventListener("submit", async (event) => {
                 event.preventDefault();
-                console.log("button pressed");
-
-                const loot = await generateLoot(lootForm);
+        const errorBox = document.getElementById("validation-alert");
+        const loot = await generateLoot(lootForm);
+        console.log(errorBox.style.display);
+        if(errorBox.style.display != "block"){
+            console.log("button pressed 2");
                 lootContainer.innerHTML = lootListTemplate(loot);
-            });
-   
+            }else{
+                console.log("exit")
+                return
+            }});
+        
 
