@@ -23,15 +23,15 @@
 <!--encounter form-->
   <section class="encounter-information">
           <form
-            id="encounter-form"
-            onsubmit=" event.preventDefault(); /* const myCheckout = new CheckoutProcess(); myCheckout.init(); myCheckout.checkout(this);*/"
+            id="encounterForm"
+            onsubmit=" event.preventDefault();" 
             novalidate
           >
             <h2>Encounter Details</h2>
             <!-- Hidden inline notification alert area -->
             <div
               id="validation-alert"
-              class="encounter-hidden-alert"
+              class="encounterHiddenAlert"
               role="alert"
             >
               Please correct the highlighted fields before continuing.
@@ -65,30 +65,32 @@
             <select id="environment" name="environment" required>
               <option value="">Select Environment</option>
               <options value="arctic">Arctic</option>
-              <option value="caves">Caves</option>
-              <option value="coast">Coast</option>
+              <option value="coastal">Coastal</option>
               <option value="desert">Desert</option>
               <option value="forest">Forest</option>
               <option value="grassland">Grassland</option>
-              <option value="hills">Hills</option>
-              <option value="laboratory">Laboratory</option>
-              <option value="lake">Lake</option>
+              <option value="hill">Hills</option>
               <option value="mountain">Mountain</option>
-              <option value="ocean">Ocean</option>
-              <option value="ruins">Ruins</option>
-              <option value="sewer">Sewer</option>
-              <option value="shadowfell">Shadowfell</option>
               <option value="swamp">Swamp</option>
-              <option value="temple">Temple</option>
-              <option value="tomb">Tomb</option>
-              <option value="underworld">Underworld</option>
+              <option value="underdark">Underdark</option>
+              <option value="underwater">Underwater</option>
               <option value="urban">Urban</option>
             </select>
+            <br>
+            <div
+              id="list-alert"
+              class="listHiddenAlert"
+              role="alert"
+            >
+              No monsters match your results, enter different parameters.
+            </div>
             <button type="submit" id="generateEncounter">
               Generate Encounter
             </button>
           </form>
+
 <!--generated results-->
+<section id="lootPage"></section>
     <section id="monster-container"></section>
     </main>
     <footer class="divider" id="main-footer"></footer>

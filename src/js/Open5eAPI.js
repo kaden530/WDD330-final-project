@@ -2,97 +2,7 @@ export default class Open5eApi {
     constructor() {
         this.baseUrl = "https://api.open5e.com/v2";
     }
-/*Combat encounter Generation*/
-    async parseMonsterList(targetEnvironment) {
-        try {
-            const response = await fetch(`${this.baseUrl}/creatures/`);
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-            const data = await response.json();
-            const monsters = data.results || [];
-
-            console.log(`--- Total Monsters Fetched: ${monsters.length} ---`);
-
-            monsters.forEach(monster => {
-                console.log(`Name: ${monster.name} | CR: ${monster.challenge_rating} | Habitat: ${monster.environments?.join(', ') || 'N/A'}`);
-            });
-    const filteredCreatures = monsters.filter(creature => {
-      if (!creature.environments || !Array.isArray(creature.environments)) return false;
-      
-      // Perform a case-insensitive match inside the environments array
-      return creature.environments.some(env => 
-        env.toLowerCase().includes(targetEnvironment.toLowerCase())
-      );
-    });
-
-    console.log(`\n--- Found ${filteredCreatures.length} creatures in the "${targetEnvironment}" environment ---`);
-    
-    // Output a few results to check
-    filteredCreatures.slice(0, 10).forEach(c => {
-      console.log(`- ${c.name} (CR: ${c.challenge_rating})`);
-    });
-
-    return filteredCreatures;
-
-        } catch (error) {
-            console.error('Error fetching or parsing monster data:', error);
-            return [];
-        }
-    }
-
-
-
-//Attempt 2
-async fetchAllCreatures(targetCR) {
-  // Start with the initial Open5e v2 API page
-    let pageCount = 1;
-   let currentUrl = `${this.baseUrl}/creatures/?page=${pageCount}`;
-  let allCreatures = [];
-
-
-  console.log('Starting data retrieval from Open5e API...');
-
-  try {
-    // Keep looping as long as the API provides a 'next' page URL
-    while (currentUrl) {
-      console.log(`Fetching page ${pageCount}...`);
-      
-      const response = await fetch(currentUrl);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-       const data = await response.json();
-            const monsters = data.results || [];
-      const creature = monsters.find(monster => monster.challenge_rating === targetCR /*&& monster.environment === environment*/);
-    
-    if (creature) {
-      console.log(`Found Creature!Name: ${creature.name}, AC: ${creature.armor_class}, HP: ${creature.hit_points}`);
-      allCreatures = allCreatures.concat(creature);
-      currentUrl = data.next; 
-      pageCount++;
-      } else {
-      console.log(`No valid Creatures found on page ${pageCount} of results.`);
-            currentUrl = data.next; 
-      pageCount++;
-      
-    }
-
-      
-      //Merge the current page's results into our main array
-     
-      
-      // Update currentUrl to the next page link, or null to exit the loop
-    }
-
-    console.log(`\n Success! Total Creatures Fetched: ${allCreatures.length}`);
-    
-
-    return allCreatures;
-
-  } catch (error) {
-    console.error('An error occurred while pulling all pages:', error);
-  }
-}
 /*Loot generation*/
 
 
@@ -100,13 +10,15 @@ async getItems(highestValue){
   let pageCount = 1;
   let itemUrl = `${this.baseUrl}/items/?page=2&page=${pageCount}`;
   let allItems =[]
-  console.log('Starting data retrieval from Open5e API...');
+  if (allItems.length > 0){
+    allItems.length=0
+  }
+  console.log('Starting data retrieval from Open5e API for items...');
 
   try {
     // Keep looping as long as the API provides a 'next' page URL
     while (itemUrl) {
-      console.log(`Fetching page ${pageCount}...`);
-      const response = await fetch(itemUrl);
+            const response = await fetch(itemUrl);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -120,7 +32,11 @@ async getItems(highestValue){
             //allItems.push(...matchingItems);
       if (loot) {
         loot.forEach(loot => {
-           //console.log(`Found Loot!  Name: ${loot.name}, Desc: ${loot.desc}`);
+          loot.rarity ='none'
+          const cleanText = (loot.desc).replace(/\n/g, ' ');
+          loot.desc = cleanText
+           loot.weight = Math.round(loot.weight)
+          loot.cost = Math.round(loot.cost)
         });
         allItems = allItems.concat(loot);
         itemUrl = data.next; 
@@ -137,7 +53,76 @@ async getItems(highestValue){
   } catch (error) {
     console.error('An error occurred while pulling all pages:', error);
   }
-  console.log(Array.isArray(allItems));
+  return allItems
+}
+
+
+/*Get magic Items*/
+async getMagicItems(rarity){
+  let pageCount = 1;
+  let magicItemUrl = `${this.baseUrl}/magicitems/?page=${pageCount}`;
+  let allItems =[]
+  console.log('Starting data retrieval from Open5e API for magic items...');
+
+  try {
+    // Keep looping as long as the API provides a 'next' page URL
+    while (magicItemUrl) {
+      const response = await fetch(magicItemUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      const items = data.results || [];
+
+
+
+      let loot = items.filter(item => item.rarity.rank <= rarity)
+      if (loot) {
+        loot.forEach(loot => {
+          const cleanText = (loot.desc).replace(/\n/gi, "<br />");
+          loot.desc = cleanText
+          loot.weight = Math.round(loot.weight)
+          loot.cost = Math.round(loot.cost)
+          let diceroll=1
+          let cost =0
+          if(loot.rarity.rank == 1){
+            //common magic items cos
+            diceroll = Math.floor(Math.random() * 6) +2
+            cost = diceroll * 10
+          }else if(loot.rarity.rank == 2){
+            //uncommon magic items cost
+            diceroll = Math.floor(Math.random() * 6) + 1
+            cost = diceroll * 100
+          }else if(loot.rarity.rank == 3){
+            //rare magic items cost
+            diceroll = (Math.floor(Math.random() * 10) + 1) + (Math.floor(Math.random() * 10) + 1)
+            cost =  diceroll * 1000
+          }else if(loot.rarity.rank == 4){
+            //very-rare magic items cost
+            diceroll = (Math.floor(Math.random() * 4) + 1)
+            cost = diceroll * 10000
+          }else if(loot.rarity.rank == 5){
+            //legendary magic items cost
+            diceroll = (Math.floor(Math.random() * 6) +1) +(Math.floor(Math.random() * 6) + 1)
+            cost = diceroll * 25000
+          }
+          loot.cost = cost
+        });
+        allItems = allItems.concat(loot);
+        magicItemUrl = data.next; 
+        pageCount++;
+      } else {
+      console.log(`No magic treasure found on page ${pageCount} of results.`);
+            magicItemUrl = data.next; 
+      pageCount++;
+      
+    }
+    }
+  
+  
+  } catch (error) {
+    console.error('An error occurred while pulling all pages:', error);
+  }
   return allItems
 }
 
