@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Exposes the port to Render's load balancer network
     port: process.env.PORT ? parseInt(process.env.PORT) : 5173,
-    allowedHosts: ['://onrender.com'],
+    allowedHosts: ['wizard-lair.onrender.com'],
   },
 
   build: {
