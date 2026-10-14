@@ -24,28 +24,17 @@ function rarities(difficulty){
 function calculateLootRarity(partyLevel, difficulty) {
   const difficultyMod = rarities(difficulty);
 
-  // 3. Calculate Loot Points (LP)
-  // Higher level + tougher encounter = higher baseline score
   const levelBonus = partyLevel * 1; 
   const lootPoints = Math.floor(levelBonus * difficultyMod * 10);
 
-  // 4. Simulate the RNG Roll (Base 1 to 100)
   const baseRoll = Math.floor(Math.random() * 50) + 1;
   
-  // Total Score combining luck, skill/level, and danger
   const finalLootScore = baseRoll + lootPoints;
-console.log(lootPoints, "lootpoints ")
-console.log(baseRoll," baseroll")
-console.log(finalLootScore ,"Final loot Score")
-  // 5. Match final score against thresholds
-  // Looks at highest tier first, falls back to Common
+
   const awardedRarity = rarityLevels.find(tier => finalLootScore >= tier.minScore);
 
   return awardedRarity.key;
 }
-
-
-
 
 export async function generateLoot(form) {
     let partyLevel="";
@@ -58,7 +47,6 @@ export async function generateLoot(form) {
      enemyPartySize = Number(data.enemyPartySize);
      difficulty = data.difficulty;
      localStorage.removeItem("sharedData");
-     console.log("check 0", partyLevel, enemyPartySize, difficulty )
 }else{
     const errorBox = document.getElementById("validation-alert");
     partyLevel = Number(form.partyLevel.value);
@@ -76,10 +64,6 @@ return
 }else {
     errorBox.style.display = "none";
 }
-    console.log("check 1", partyLevel )
-
-
-
     const rarity = calculateLootRarity(partyLevel ,difficulty);
 
     let lootSize = 0;
@@ -125,7 +109,6 @@ return
         }else if(partyLevel > 19){
             magicAmounts = magicAmounts * (Math.floor(Math.random()*3) + 2);
         }
-        console.log(magicAmounts)
         if (difficulty ==="easy"){
             magicAmounts = magicAmounts * 0.5;
         }else if (difficulty ==="medium"){
@@ -135,22 +118,17 @@ return
         }else if (difficulty ==="deadly"){
             magicAmounts = (magicAmounts * 1.5) + 1;        
         }
-        console.log(magicAmounts)
         return magicAmounts
     }
 
 const magicItemAmount = magicItemAmounts(partyLevel, difficulty)
 const highestValue = priceCeiling(partyLevel);
-    console.log(rarity);
-console.log("MagicItemAmount is: ",magicItemAmount)
-console.log("highestValue is: ",highestValue)
-console.log("Lootsize is: ",lootSize)
+
 const api = new open5eApi();
 // Get the available items
 const magicItemData =await api.getMagicItems(rarity)
 const itemData = await api.getItems(highestValue);
-console.log(magicItemData.length , "amount of magic items returned");
-console.log(itemData.length , "amount of non-magic items returned");
+
 let lootedItems = [];
 for (let i = 0; i < lootSize ; i++) {
 
@@ -163,7 +141,6 @@ let item = itemData[randomItem];
 
 
 lootedItems.push(item);}
-console.log(lootedItems.length , "item cards before magic items");
 //Get random magic Items
 for (let i = 0; i < magicItemAmount ; i++) {
 
@@ -171,12 +148,11 @@ for (let i = 0; i < magicItemAmount ; i++) {
 
     let randomMagicItem = Math.floor(Math.random() * (magicItemData.length + 1));
 
-    // Get the Items information
+    // Get the Magic Items information
 let item = magicItemData[randomMagicItem];
-console.log(item)
+
 lootedItems.push(item);}
 
-console.log(lootedItems.length, "item cards with magic items");
 return lootedItems
 }
 }
@@ -194,12 +170,10 @@ lootForm.addEventListener("submit", async (event) => {
                 event.preventDefault();
         const errorBox = document.getElementById("validation-alert");
         const loot = await generateLoot(lootForm);
-        console.log(errorBox.style.display);
+
         if(errorBox.style.display != "block"){
-            console.log("button pressed 2");
                 lootContainer.innerHTML = lootListTemplate(loot);
             }else{
-                console.log("exit")
                 return
             }});
         

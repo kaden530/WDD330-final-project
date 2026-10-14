@@ -1,8 +1,6 @@
 import { loadHeaderFooter } from './utils.mjs';
 import DndApi from "./D&DAPI.js";
-import open5eApi from "./Open5eAPI.js";
-import { monsterTemplate, monsterListTemplate, lootButtonTemplate } from "./templates.js";
-
+import { monsterListTemplate, lootButtonTemplate } from "./templates.js";
 import { findMonstersByEnviroment } from './environment.js';
 
 
@@ -64,8 +62,7 @@ return
 
 const targetCR = calculatePartyChallenege(partyLevel, partySize, difficulty, enemyPartySize);
 const monsterEnvironment = findMonstersByEnviroment(environment)
-console.log(targetCR)
-console.log(`the environment monsters ${monsterEnvironment}`)
+
 //const api = new open5eApi()
 const api = new DndApi();
 // Get the available monsters
@@ -103,8 +100,6 @@ const encounterError = document.getElementById("list-alert");
     const errorBox = document.getElementById("validation-alert");
 if(errorBox.style.display != "block"){
     monsterContainer.innerHTML = monsterListTemplate(encounter);
-    console.log(encounter.length);
-    console.log(encounter);
     if(encounterError.style.display != "block"){const userData = { partyLevel : Number(encounterForm.partyLevel.value),   partySize : Number(encounterForm.partySize.value), enemyPartySize : Number(encounterForm.enemyParty.value), environment : encounterForm.environment.value, difficulty : encounterForm.difficulty.value};
 localStorage.setItem("sharedData", JSON.stringify(userData));
 lootButton.innerHTML = lootButtonTemplate()}

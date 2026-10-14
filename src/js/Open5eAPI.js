@@ -13,10 +13,7 @@ async getItems(highestValue){
   if (allItems.length > 0){
     allItems.length=0
   }
-  console.log('Starting data retrieval from Open5e API for items...');
-
   try {
-    // Keep looping as long as the API provides a 'next' page URL
     while (itemUrl) {
             const response = await fetch(itemUrl);
       if (!response.ok) {
@@ -28,8 +25,6 @@ async getItems(highestValue){
 
 
       const loot = items.filter(item => item.cost < highestValue)
-            //const matchingItems = items.filter(item => item.cost < 500);
-            //allItems.push(...matchingItems);
       if (loot) {
         loot.forEach(loot => {
           loot.rarity ='none'
@@ -62,10 +57,9 @@ async getMagicItems(rarity){
   let pageCount = 1;
   let magicItemUrl = `${this.baseUrl}/magicitems/?page=${pageCount}`;
   let allItems =[]
-  console.log('Starting data retrieval from Open5e API for magic items...');
+
 
   try {
-    // Keep looping as long as the API provides a 'next' page URL
     while (magicItemUrl) {
       const response = await fetch(magicItemUrl);
       if (!response.ok) {
@@ -86,7 +80,7 @@ async getMagicItems(rarity){
           let diceroll=1
           let cost =0
           if(loot.rarity.rank == 1){
-            //common magic items cos
+            //common magic items cost
             diceroll = Math.floor(Math.random() * 6) +2
             cost = diceroll * 10
           }else if(loot.rarity.rank == 2){
@@ -125,13 +119,6 @@ async getMagicItems(rarity){
   }
   return allItems
 }
-
-
-
-
-/*store generation */
-
-
 }
 
 
