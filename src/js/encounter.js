@@ -93,7 +93,7 @@ return selectedMonsters;
 
 
 //Form submission
-const encounterForm = document.querySelector("#encounter-form");
+const encounterForm = document.querySelector("#encounterForm");
 const monsterContainer = document.querySelector("#monster-container");
 const lootButton = document.querySelector("#lootPage")
 encounterForm.addEventListener("submit", async (event) => {

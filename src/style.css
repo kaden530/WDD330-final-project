@@ -1,13 +1,21 @@
 
+html{background-color: #5d5d5d;}
+/*fonts*/
+H1,H2,H3,h4{
+  font-family: 'montenegrin gothic one';
+ }
+ p{
+  font-family: 'playfair display';
+
+ }
 #main-header{
-  & .logo{  display:flex;
-  flex-direction: row;}
+ width: 105%;
   display:grid;
-  width: 100%;
-
   align-items: center;
-
    color: white;
+  & .logo{  display:flex;
+  flex-direction: row;
+width:100%;}
   & h1{font-size: 2.5em;}
   & img{
   max-width: 100px;
@@ -18,9 +26,9 @@
   & #nav-links {
     display: grid;
     grid-template-columns: repeat(3,auto);
-    width:90% ;
+    width:100% ;
     font-size: 1em;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 10px 20px;
     background-color: maroon;
@@ -28,57 +36,24 @@
   }
   & a{
     height:90%;
-
-      border: 5px solid black;
           font-size: 2em;
+            color:#f9f9f9;  
   }
 }
 #main-footer{
+  display: inline-block;
   background-color: #1a1a1a;
   color: white;
   text-align: center;
   padding: 10px;
   font-size: 1.5em;
+    width: 100%;
 border-top: 1px solid #ccc;
+margin-bottom: 20px;
 
 }
 /* --- Base Styles: Mobile First (Phones under 600px) --- */
-/*header and footer styles*/
-#main-header{
-   color: white;
-  & img{
-  max-width: 100px;
-  height: 100px;
-  margin-right: 10px;
-  }
-  background-color: #1a1a1a;
-  & #nav-links a{
-    display: inline-block;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: maroon;
-    border: 2px;
-    max-width: 200px;
-  }
-}
-#main-footer{
-  background-color: #1a1a1a;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 1.5em;
-border-top: 1px solid #ccc;
-}
-/*fonts*/
- H1{
-  font-family: 'montenegrin gothic one';
- }
- p{
-  font-family: 'playfair display';
-
- }
-
+@media screen and (max-width: 600px){
  /*loot link button */
  section{
   justify-items: center;
@@ -104,8 +79,8 @@ section .lootButton:hover {
   background-color: #b3a400;
 }
  /*encounter form styles*/
- form #encounterForm{
-  align-self: center;
+ form#encounterForm{
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,10 +88,36 @@ section .lootButton:hover {
   margin-top: 20px;
   border: 10px solid #ccc;
   margin: 0 auto;
-  width: fit-content;
+  width: 80%;
   padding: 20px;
   border-radius: 10px;
   background-color: #f2f2f2;
+  & h2{
+    font-size: 2.2em;
+  }
+  & label{
+  font-size: 2em;
+  }
+  & input{
+    width:50%;
+    height:40px;
+    font-size: 1em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:40px;
+    font-size: 1em;
+    & option{
+      font-size: 0.8em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    width:70%;
+    height:40px;
+    font-size: 1em;
+  }
   & .encounterHiddenAlert{display: none ;
   color: red;}
   & .listHiddenAlert{display: none ;
@@ -167,23 +168,25 @@ align-content: center;
 justify-content: space-evenly;
 justify-items: center;
 width: fit-content;
-grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
+grid-template-rows: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
   gap: 20px;
   width: 100%;
     grid-auto-rows: minmax(150px, auto);
+
 & article.monster-card{
-    max-width: 80%;
+    max-width: 95%;
     min-width: 40%;
   border: 5px solid black;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  background-color: #f9f9f9;
+  background-color:grey;
   flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     border: 5px solid black;
     justify-content: center;
+   
   }
   & .monster-card-header section{
     display: flex;
@@ -191,8 +194,12 @@ grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
     align-items: center;
     flex-direction: column;
     padding : 5px;
-  
+    background-color: #f9f9f9;
     border:#1a1a1a solid 5px;
+  & h2{font-size: 2.5em;}
+  }
+  & p{
+    font-size: 1.5em;
   }
   & img{
     max-width: 90%;
@@ -204,16 +211,22 @@ grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
     flex-direction: row;
      flex-wrap: wrap;
     align-items: center;
+    background-color: #f9f9f9;
     & p{padding-left: 5px;
     margin: 3px;}
   }
+  & section{
+background-color: #1a1a1a;
+  }
   & .monster-card-abilities{
     display: flex;
+    background-color: #f9f9f9;
     flex-direction: column;
     justify-items: center;
     padding : 5px;
     align-items: center;
     border:#1a1a1a solid 5px;
+    & h3{font-size:1.5em ;}
   }
   & .monster-ability-scores{
     display: flex;
@@ -237,13 +250,847 @@ justify-items: left;
     border: 5px solid #ccc;
     max-width: 95%;
     margin: 10px auto;
+    & section{
+      background-color: #f9f9f9;
+    }
     & h3{
+      font-size:1.5em ;
       padding-left: 5px;
     }
     & .monster-action{
       padding-left: 5px;
       & p{
-        font-size: 0.8em;
+        margin: 5px;
+        font-size:1.2em;
+      }
+      & h4{
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 1.5em;
+      }
+
+    }
+
+  }
+
+}
+/* Loot Card Styles */
+#lootContainer{
+display: grid;
+ align-items: start;
+align-content: center;
+justify-content: space-evenly;
+justify-items: center;
+height: fit-content;
+  gap: 20px;
+  width: 100%;
+    grid-auto-rows: minmax(150px, auto);
+  & article.lootCard{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #f9f9f9;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+  }
+  & .lootCardHeader{
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    max-width: fit-content;
+    padding : 5px;
+    align-items: left;
+    border:#1a1a1a solid 5px;
+  }
+  & .lootCardDesc{
+    display: flex;
+    flex-direction: column;
+     flex-wrap: wrap;
+    align-items: center;
+    & p{padding-left: 5px;
+    margin: 2px;
+    font-size: 1.3em;}
+  }
+  & article.magicLootCardCommon{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #8d8d8d;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardUncommon{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #03d100;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardRare{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #1001bd;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardVery-Rare{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #e203ff;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardLegendary{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #fff203;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& .magicLootCardHeader{
+    display: flex;
+     background-color: #f9f9f9;
+    margin:auto;
+    flex-direction: column;
+    max-width: fit-content;
+    padding : 5px;
+      font-size: 1.4em;
+    align-items: left;
+    border:#1a1a1a solid 5px;
+  }
+  & .magicLootCardDesc{
+     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+     flex-wrap: wrap;
+    align-items: center;
+    & p{padding-left: 5px;
+    margin: 5px;
+    font-size: 1.4em;}
+  }
+
+}
+}
+/* --- Tablets (600px to 900px) --- */
+@media screen and (min-width: 600px) {
+  #main-header{
+  & .logo{  display:flex;
+  flex-direction: row;}
+  display:grid;
+  width: 100%;
+
+  align-items: center;
+
+   color: white;
+  & h1{font-size: 4em;
+  margin: auto;}
+  & img{
+  max-width: 100px;
+  height: 100px;
+  margin-right: 1px;
+  margin-left:10px;
+  }
+  background-color: #1a1a1a;
+  & #nav-links {
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    width:94% ;
+    font-size: 1em;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: maroon;
+    border: 5px;
+  }
+  & a{
+    height:90%;
+          font-size: 2em;
+  }
+}
+#main-footer{
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.7em;
+border-top: 1px solid #ccc;
+margin-bottom: 20px;
+
+} 
+  
+  /*loot link button */
+ section{
+  justify-items: center;
+ }
+ section .lootButton{
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 1.5em;
+  align-items: center;
+  display: inline-block;
+  padding: 15px 20px;
+  background-color: rgb(177, 176, 176);
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  border-radius: 5px;
+  border: 1px#1a1a1a solid;
+  font-weight: bold;
+  text-align: center;
+}
+
+section .lootButton:hover {
+  background-color: #b3a400;
+}
+ /*encounter form styles*/
+ form#encounterForm{
+  align-self:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 10px solid #ccc;
+  margin: 0 auto auto auto;
+  width: 80%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  & h2{
+    font-size: 2.2em;
+  }
+  & label{
+  font-size: 2em;
+  }
+  & input{
+    width:50%;
+    height:40px;
+    font-size: 1.5em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:40px;
+    font-size: 1em;
+    & option{
+      font-size: 1.2em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    width:70%;
+    height:40px;
+    font-size: 1.5em;
+  }
+  & .encounterHiddenAlert{display: none ;
+  color: red;}
+  & .listHiddenAlert{display: none ;
+  color: red;}
+}
+/*Loot Form Styles*/
+form#lootForm{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 10px solid #ccc;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  font-size: 2em;
+  & #validation-alert.lootHiddenAlert{display: none ;
+    color: red;}
+  & input{
+    width:50%;
+    height:40px;
+    font-size: 1em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:40px;
+    font-size: 0.7em;
+    & option{
+      font-size: 0.5em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    font-size: 1em;
+    background-color: #8d8d8d;
+  }
+
+}
+/* Monster Card Styles */
+#monster-container{
+display: grid;
+ align-items: start;
+align-content: center;
+justify-content: space-evenly;
+justify-items: center;
+width: fit-content;
+grid-template-rows: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
+  gap: 20px;
+  width: 100%;
+    grid-auto-rows: minmax(150px, auto);
+
+& article.monster-card{
+    max-width: 95%;
+    min-width: 40%;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  background-color:grey;
+  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    border: 5px solid black;
+    justify-content: center;
+   
+  }
+  & .monster-card-header section{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding : 5px;
+    background-color: #f9f9f9;
+    border:#1a1a1a solid 5px;
+  & h2{font-size: 2.5em;}
+  }
+  & p{
+    font-size: 1.5em;
+  }
+  & img{
+    max-width: 90%;
+  }
+  & .monster-card-stats{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+     flex-wrap: wrap;
+    align-items: center;
+    background-color: #f9f9f9;
+    & p{padding-left: 5px;
+    margin: 3px;}
+  }
+  & section{
+background-color: #1a1a1a;
+  }
+  & .monster-card-abilities{
+    display: flex;
+    background-color: #f9f9f9;
+    flex-direction: column;
+    justify-items: center;
+    padding : 5px;
+    align-items: center;
+    border:#1a1a1a solid 5px;
+    & h3{font-size:1.5em ;}
+  }
+  & .monster-ability-scores{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding : 5px;
+    align-items: center;
+  & p{
+    margin: 0 10px;
+  }}
+  & .monster-card section{
+    border: 5px solid #ccc;
+    max-width: 95%;
+    margin: 10px auto;
+justify-items: left;
+    
+
+  }
+  & .monster-card-actions{
+    border: 5px solid #ccc;
+    max-width: 95%;
+    margin: 10px auto;
+    & section{
+      background-color: #f9f9f9;
+    }
+    & h3{
+      font-size:2em ;
+      padding-left: 5px;
+    }
+    & .monster-action{
+      padding-left: 5px;
+      & p{
+        margin: 5px;
+        font-size:1.5em;
+      }
+      & h4{
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 1.9em;
+        font-weight: bold;
+      }
+
+    }
+
+  }
+
+}
+/* Loot Card Styles */
+#lootContainer{
+display: grid;
+align-items: start;
+align-content: center;
+justify-content: space-evenly;
+justify-items: center;
+width: fit-content;
+grid-template-columns: repeat(auto-fit, minmax(calc(50% - 15px), 1fr));
+  gap: 20px;
+  width: 100%;
+    grid-auto-rows: minmax(150px, auto);
+  & article.lootCard{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #f9f9f9;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+  }
+  & .lootCardHeader{
+    display: flex;
+    font-size: 1.5em;
+    margin:auto;
+    flex-direction: column;
+    max-width: fit-content;
+    padding : 5px;
+    align-items: left;
+    border:#1a1a1a solid 5px;
+  }
+  & .lootCardDesc{
+    display: flex;
+    flex-direction: column;
+     flex-wrap: wrap;
+    align-items: center;
+    & p{padding-left: 5px;
+    margin: 2px;
+    font-size: 1.6em;}
+  }
+  & article.magicLootCardCommon{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #8d8d8d;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardUncommon{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #03d100;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardRare{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #1001bd;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardVery-Rare{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #e203ff;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& article.magicLootCardLegendary{
+    width: 90%;
+    max-height: fit-content;
+    
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #fff203;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+}
+& .magicLootCardHeader{
+    display: flex;
+     background-color: #f9f9f9;
+    margin:auto;
+    flex-direction: column;
+    max-width: fit-content;
+    padding : 5px;
+    align-items: left;
+    border:#1a1a1a solid 5px;
+  }
+  & .magicLootCardDesc{
+     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+     flex-wrap: wrap;
+    align-items: center;
+    & p{padding-left: 5px;
+    margin: 5px;
+    font-size: 1.4em;}
+  }
+
+}
+}
+
+/* --- Small Laptops & Desktops (901px to 1200px) --- */
+@media screen and (min-width: 901px) {
+  #main-header{
+  & .logo{  display:flex;
+  flex-direction: row;}
+  display:grid;
+
+
+  align-items: center;
+
+   color: white;
+  & h1{font-size: 6.5em;}
+  & img{
+    height:200px;
+  margin-left: 25px;
+  margin-right: 10px;
+  }
+  background-color: #1a1a1a;
+  & #nav-links {
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    max-height: 55%;
+    width:96% ;
+    font-size: 1em;
+    align-items: center;
+    background-color: maroon;
+    border: 5px;
+  }
+  & a{      
+    font-size: 2em;
+          padding-bottom: 0px;
+  }
+}
+#main-footer{
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+padding: 10px 0px 10px 0px;
+  font-size: 1.5em;
+    width: 100%;
+border-top: 1px solid #ccc;
+margin-bottom: 0px;
+margin-top: 10px;
+}
+  
+  /*loot link button */
+ section{
+  justify-items: center;
+ }
+ section .lootButton{
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(177, 176, 176);
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  border-radius: 5px;
+  border: 1px#1a1a1a solid;
+  font-weight: bold;
+  text-align: center;
+}
+
+section .lootButton:hover {
+  background-color: #b3a400;
+}
+ /*encounter form styles*/
+ form#encounterForm{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 10px solid #ccc;
+  margin: 0 auto;
+  width: 70%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  & h2{
+    font-size: 2.5em;
+    font-weight: bolder;
+  }
+  & label{
+  font-size: 1.7em;
+  }
+  & input{
+    width:40%;
+    height:30px;
+    font-size: 1em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:40px;
+    font-size: 1em;
+    & option{
+      font-size: 0.8em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    width:70%;
+    height:40px;
+    font-size: 1.5em;
+  }
+  & .encounterHiddenAlert{display: none ;
+  color: red;}
+  & .listHiddenAlert{display: none ;
+  color: red;}
+}
+/*Loot Form Styles*/
+form#lootForm{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 10px solid #ccc;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  font-size: 2em;
+  & #validation-alert.lootHiddenAlert{display: none ;
+    color: red;}
+  & input{
+    width:50%;
+    height:40px;
+    font-size: 1em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:40px;
+    font-size: 0.7em;
+    & option{
+      font-size: 0.7em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    font-size: 1em;
+  }
+
+}
+/* Monster Card Styles */
+#monster-container{
+display: grid;
+ align-items: start;
+align-content: center;
+justify-content: space-evenly;
+justify-items: center;
+width: fit-content;
+grid-template-columns: repeat(auto-fit, minmax(calc(35% - 15px), 1fr));
+  gap: 5px;
+  width: 100%;
+    grid-auto-rows: minmax(150px, auto);
+& article.monster-card{
+    max-width: 85%;
+    min-width: 40%;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  background-color:grey;
+  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    border: 5px solid black;
+    justify-content: center;
+   
+  }
+  & .monster-card-header section{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding : 5px;
+    background-color: #f9f9f9;
+    border:#1a1a1a solid 5px;
+  & h2{font-size: 2.5em;}
+  }
+  & p{
+    font-size: 1.5em;
+  }
+  & img{
+    max-width: 90%;
+  }
+  & .monster-card-stats{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+     flex-wrap: wrap;
+    align-items: center;
+    background-color: #f9f9f9;
+    & p{padding-left: 5px;
+    margin: 3px;}
+  }
+  & section{
+background-color: #1a1a1a;
+  }
+  & .monster-card-abilities{
+    display: flex;
+    background-color: #f9f9f9;
+    flex-direction: column;
+    justify-items: center;
+    padding : 5px;
+    align-items: center;
+    border:#1a1a1a solid 5px;
+    & h3{font-size:1.5em ;}
+  }
+  & .monster-ability-scores{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding : 5px;
+    align-items: center;
+  & p{
+    margin: 0 10px;
+  }}
+  & .monster-card section{
+    border: 5px solid #ccc;
+    max-width: 95%;
+    margin: 10px auto;
+justify-items: left;
+    
+
+  }
+  & .monster-card-actions{
+    border: 5px solid #ccc;
+    max-width: 95%;
+    margin: 10px auto;
+    & section{
+      background-color: #f9f9f9;
+    }
+    & h3{
+      font-size:1.5em ;
+      padding-left: 5px;
+    }
+    & .monster-action{
+      padding-left: 5px;
+      & p{
+        margin: 5px;
+        font-size:1.2em;
+      }
+      & h4{
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 1.5em;
       }
 
     }
@@ -378,6 +1225,7 @@ height: fit-content;
     max-width: fit-content;
     padding : 5px;
     align-items: left;
+      font-size: 1.4em;
     border:#1a1a1a solid 5px;
   }
   & .magicLootCardDesc{
@@ -392,69 +1240,30 @@ height: fit-content;
   }
 
 }
-
-/* --- Tablets (600px to 900px) --- */
-@media screen and (min-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px;
-  }
-}
-
-/* --- Small Laptops & Desktops (901px to 1200px) --- */
-@media screen and (min-width: 901px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  }
-  .template-card {
-    padding: 24px; /* Roomier padding on bigger screens */
-  }
 }
 
 /* --- Large Screens (1201px and up) --- */
 @media screen and (min-width: 1201px) {
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr); /* Maxes out at 4 columns */
-    max-width: 1400px; /* Prevents rows from stretching infinitely */
-    margin: 0 auto;    /* Centers the whole grid on ultra-wide monitors */
-  }
 
 /*header and footer styles*/
 #main-header{
    color: white;
-  & img{
-  max-width: 50px;
-  height: 50px;
+  background-color: #1a1a1a;
+ & img{
+margin-left:20px ;
   margin-right: 10px;
   }
-  background-color: #1a1a1a;
-  & #nav-links a{
-    display: inline-block;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: maroon;
-    border: 2px;
-    max-width: 200px;
-  }
+  & h1{font-size: 9em;
+  padding-bottom: 0px;}
 }
 #main-footer{
   background-color: #1a1a1a;
   color: white;
   text-align: center;
   padding: 10px;
-  font-size: 1em;
+  font-size: 2em;
 border-top: 1px solid #ccc;
 }
-/*fonts*/
- H1{
-  font-family: 'montenegrin gothic one';
- }
- p{
-  font-family: 'playfair display';
-
- }
-
  /*loot link button */
  section{
   justify-items: center;
@@ -480,7 +1289,7 @@ section .lootButton:hover {
   background-color: #b3a400;
 }
  /*encounter form styles*/
- form #encounterForm{
+ form#encounterForm{
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -489,7 +1298,7 @@ section .lootButton:hover {
   margin-top: 20px;
   border: 10px solid #ccc;
   margin: 0 auto;
-  width: fit-content;
+  width: 40%;
   padding: 20px;
   border-radius: 10px;
   background-color: #f2f2f2;
@@ -498,7 +1307,43 @@ section .lootButton:hover {
   & .listHiddenAlert{display: none ;
   color: red;}
 }
+/*Loot Form Styles*/
+form#lootForm{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 10px solid #ccc;
+  margin: 0 auto;
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  font-size: 1.5em;
+  & #validation-alert.lootHiddenAlert{display: none ;
+    color: red;}
+  & input{
+    width:50%;
+    height:20px;
+    font-size: 1em;
+  }
+  & select{
+    align-items: center;
+    width:50%;
+    height:30px;
+    font-size: 1em;
+    & option{
+      font-size: 1em;
+      max-width: 10%;
+    }
+  }
+  & button{
+    font-size: 1em;
+  }
 
+}
 /* Monster Card Styles */
 #monster-container{
 display: grid;
@@ -508,12 +1353,12 @@ justify-content: space-evenly;
 justify-items: center;
 width: fit-content;
 grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
-  gap: 20px;
+  gap: 2px;
   width: 100%;
     grid-auto-rows: minmax(150px, auto);
 & article.monster-card{
     max-width: 80%;
-    min-width: 40%;
+    min-width: 30%;
   border: 5px solid black;
   border-radius: 5px;
   padding: 10px;
@@ -533,6 +1378,9 @@ grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
     padding : 5px;
   
     border:#1a1a1a solid 5px;
+    & p{
+      font-size: 1em;
+    }
   }
   & img{
     max-width: 90%;
@@ -545,13 +1393,15 @@ grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
      flex-wrap: wrap;
     align-items: center;
     & p{padding-left: 5px;
-    margin: 3px;}
+    margin: 3px;
+  font-size: 1em;}
   }
   & .monster-card-abilities{
     display: flex;
     flex-direction: column;
     justify-items: center;
     padding : 5px;
+    font-size: 1em;
     align-items: center;
     border:#1a1a1a solid 5px;
   }
@@ -562,7 +1412,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr));
     margin: 5px;
     padding : 5px;
     align-items: center;
-  & p{
+  & p{font-size: 1.2em;
     margin: 0 10px;
   }}
   & .monster-card section{
@@ -577,15 +1427,17 @@ justify-items: left;
     border: 5px solid #ccc;
     max-width: 95%;
     margin: 10px auto;
-    & h3{
+    & h3{font-size: 1.7em;
       padding-left: 5px;
     }
     & .monster-action{
       padding-left: 5px;
       & p{
-        font-size: 0.8em;
+        font-size: 1em;
       }
-
+ & h4{
+      font-size: 1.6em;
+    }
     }
 
   }
