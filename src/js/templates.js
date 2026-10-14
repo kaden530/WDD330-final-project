@@ -156,7 +156,7 @@ export function lootListTemplate(items) {
     return items.map(loot => lootCardTemplate(loot)).join("");}
 
 export function magicLootCardTemplate(loot){return `
-        <article class="magicLootCard${loot.rarity.name}">
+        <article class="magicLootCard${loot.rarity.key}">
         <section class = "${loot.rarity.name}">
             <header class="magicLootCardHeader">
                 <h2>${loot.name}</h2>

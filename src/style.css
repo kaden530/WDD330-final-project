@@ -1487,7 +1487,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     & p{padding-left: 5px;
     margin: 2px;}
   }
-  & article.magicLootCardCommon{
+  & article.magicLootCardcommon{
     width: 80%;
     max-height: fit-content;
     
@@ -1502,7 +1502,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     flex-direction: column;
     border: 5px solid black;
 }
-& article.magicLootCardUncommon{
+& article.magicLootCarduncommon{
     width: 80%;
     max-height: fit-content;
     
@@ -1517,7 +1517,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     flex-direction: column;
     border: 5px solid black;
 }
-& article.magicLootCardRare{
+& article.magicLootCardrare{
     width: 80%;
     max-height: fit-content;
     
@@ -1532,7 +1532,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     flex-direction: column;
     border: 5px solid black;
 }
-& article.magicLootCardVery-Rare{
+& article.magicLootCardvery-rare{
     width: 80%;
     max-height: fit-content;
     
@@ -1547,7 +1547,7 @@ grid-template-columns: repeat(auto-fit, minmax(calc(30% - 15px), 1fr));
     flex-direction: column;
     border: 5px solid black;
 }
-& article.magicLootCardLegendary{
+& article.magicLootCardlegendary{
     width: 80%;
     max-height: fit-content;
     
