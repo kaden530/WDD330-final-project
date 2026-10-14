@@ -172,11 +172,11 @@ return lootedItems
 const lootForm = document.querySelector("#lootForm");
 const lootContainer = document.querySelector("#lootContainer");
 window.addEventListener('load', async () => {
-    try {
+
         if (localStorage.length != 0) {
             const loot = await generateLoot(lootForm);
             lootContainer.innerHTML = lootListTemplate(loot);
-        } else {
+        } else {return}});
             lootForm.addEventListener("submit", async (event) => {
                 event.preventDefault();
                 console.log("button pressed");
@@ -184,9 +184,5 @@ window.addEventListener('load', async () => {
                 const loot = await generateLoot(lootForm);
                 lootContainer.innerHTML = lootListTemplate(loot);
             });
-        }
-    } catch (error) {
-        console.error("Failed to verify user:", error);
-    }
-});
+   
 
