@@ -125,4 +125,3 @@ async getMagicItems(rarity){
   
 
 
-

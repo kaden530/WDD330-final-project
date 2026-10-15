@@ -46,6 +46,7 @@ export async function generateLoot(form) {
      partyLevel = Number(data.partyLevel);
      enemyPartySize = Number(data.enemyPartySize);
      difficulty = data.difficulty;
+     console.log(partyLevel, enemyPartySize, difficulty)
      localStorage.removeItem("sharedData");
 }else{
     const errorBox = document.getElementById("validation-alert");
@@ -55,7 +56,7 @@ export async function generateLoot(form) {
 if (partyLevel === "") {
     errorBox.style.display = "block";
     return
-  }else if(enemyPartySize=== ""){
+}else if(enemyPartySize=== ""){
 errorBox.style.display = "block";
 return   
 }else if(difficulty===""){
@@ -63,7 +64,9 @@ errorBox.style.display = "block";
 return
 }else {
     errorBox.style.display = "none";
-}
+}}
+     console.log("check 2")
+     console.log(partyLevel, enemyPartySize, difficulty)
     const rarity = calculateLootRarity(partyLevel ,difficulty);
 
     let lootSize = 0;
@@ -94,6 +97,7 @@ return
         }
         return maxPrice
     }
+
     function magicItemAmounts(partyLevel, difficulty,) {
         let magicAmounts = 1
         if (partyLevel < 5){
@@ -120,15 +124,20 @@ return
         }
         return magicAmounts
     }
-
+         console.log("check 3")
+     console.log(partyLevel, enemyPartySize, difficulty)
 const magicItemAmount = magicItemAmounts(partyLevel, difficulty)
 const highestValue = priceCeiling(partyLevel);
-
+console.log(rarity);
+console.log("MagicItemAmount is: ",magicItemAmount)
+console.log("highestValue is: ",highestValue)
+console.log("Lootsize is: ",lootSize)
 const api = new open5eApi();
 // Get the available items
-const magicItemData =await api.getMagicItems(rarity)
+const magicItemData =await api.getMagicItems(rarity);
 const itemData = await api.getItems(highestValue);
-
+console.log(itemData)
+console.log(magicItemData)
 let lootedItems = [];
 for (let i = 0; i < lootSize ; i++) {
 
@@ -152,10 +161,10 @@ for (let i = 0; i < magicItemAmount ; i++) {
 let item = magicItemData[randomMagicItem];
 
 lootedItems.push(item);}
-
+console.log(lootedItems)
 return lootedItems
 }
-}
+
 
 
 const lootForm = document.querySelector("#lootForm");
